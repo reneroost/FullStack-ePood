@@ -4,7 +4,8 @@ import { Toode } from 'src/app/yldine/toode';
 
 @Component({
   selector: 'app-toode-nimekiri',
-  templateUrl: './toode-nimekiri-tabel.component.html',
+  templateUrl: './toode-nimekiri-vork.component.html',
+  // templateUrl: './toode-nimekiri-tabel.component.html',
   // templateUrl: './toode-nimekiri.component.html',
   styleUrls: ['./toode-nimekiri.component.css']
 })

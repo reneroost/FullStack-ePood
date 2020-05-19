@@ -1,0 +1,18 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div *ngFor="let toode of tooted" class="col-md-3">
+                    <div class="product-box">
+                        <img src="{{ toode.pildiUrl }}" class="img-responsive">
+                        <h1>{{ toode.nimi }}</h1>
+                        <div class="hind">{{ toode.artikliHind | currency:'EUR' }}</div>
+                        <a href="#" class="primary-btn">Lisa ostukorvi</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

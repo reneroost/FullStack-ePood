@@ -1,5 +1,69 @@
-<div class="container">
-  <h1 class="mt-3 mb-3">Tooted</h1>
-  
-  <app-toode-nimekiri></app-toode-nimekiri>
+<div class="page-wrapper">
+
+  <!-- MENÜÜ KÜLGRIBA -->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a href="#">
+        <img src="assets/images/logo.png" alt="epood" class="img-responsive">
+      </a>
+    </div>
+    <div class="menu-sidebar-content js-scrollbar1">
+      <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+          <li>
+            <a href="#">Raamatud</a>
+          </li>
+          <li>
+            <a href="#">Kohvitassid</a>
+          </li>
+          <li>
+            <a href="#">Hiirepadjad</a>
+          </li>
+          <li>
+            <a href="#">Pagasi sildid</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- MENÜÜ KÜLGRIBA LÕPP -->
+
+  <!-- LEHE KONTEINER-->
+  <div class="page-container">
+    <!-- PÄIS -->
+    <header class="header-desktop">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+            <form class="form-header" onsubmit="return false;" method="GET">
+              <input class="au-input au-input-xl" type="text" name="search" placeholder="otsing" />
+              <button class="au-btn-submit" type="submit">
+                Otsi
+              </button>
+            </form>
+            <div class="cart-area d-n">
+              <a href="shopping-detail.html">
+                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="account-wrap"></div>
+        </div>
+      </div>
+    </header>
+    <!-- PÄISE LÕPP -->
+
+    <!-- PÕHISISU -->
+    <app-toode-nimekiri></app-toode-nimekiri>
+
+  </div>
 </div>
+
+<!-- LEHE KONTEINERI LÕPP -->
+<footer>
+  <ul>
+    <li><a href="#">Meist</a></li>
+    <li><a href="#">Kontakt</a></li>
+    <li><a href="#">Abi</a></li>
+  </ul>
+</footer>
