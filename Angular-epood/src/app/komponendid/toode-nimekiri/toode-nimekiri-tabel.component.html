@@ -1,0 +1,21 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th>Nimi</th>
+            <th>Hind</th>
+            <th>Artikleid laos</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let toode of tooted">
+            <td class="align-middle">
+                <img src="{{ toode.pildiUrl }}" height="50"/>
+            </td>
+            <td class="align-middle">{{ toode.nimi }}</td>
+            <td class="align-middle">{{ toode.artikliHind | currency:'EUR' }}</td>
+            <td class="align-middle">{{ toode.artikleidLaos }}</td>
+        </tr>
+    </tbody>
+</table>
