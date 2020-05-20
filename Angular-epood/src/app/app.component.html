@@ -11,16 +11,16 @@
       <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar-list">
           <li>
-            <a href="#">Raamatud</a>
+            <a routerLink="/kategooria/1" routerLinkActive="active-link">Raamatud</a>
           </li>
           <li>
-            <a href="#">Kohvitassid</a>
+            <a routerLink="/kategooria/2" routerLinkActive="active-link">Kohvitassid</a>
           </li>
           <li>
-            <a href="#">Hiirepadjad</a>
+            <a routerLink="/kategooria/3" routerLinkActive="active-link">Hiirepadjad</a>
           </li>
           <li>
-            <a href="#">Pagasi sildid</a>
+            <a routerLink="/kategooria/4" routerLinkActive="active-link">Pagasisildid</a>
           </li>
         </ul>
       </nav>
@@ -54,7 +54,7 @@
     <!-- PÄISE LÕPP -->
 
     <!-- PÕHISISU -->
-    <app-toode-nimekiri></app-toode-nimekiri>
+    <router-outlet></router-outlet>
 
   </div>
 </div>

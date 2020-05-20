@@ -13,8 +13,10 @@ export class ToodeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getToodeNimekiri(): Observable<Toode[]> {
-    return this.httpClient.get<SaaVastus>(this.baasUrl).pipe(
+  getToodeNimekiri(kategooriaId: number): Observable<Toode[]> {
+    const otsingUrl = `${this.baasUrl}/search/findByKategooriaId?id=${kategooriaId}`;
+
+    return this.httpClient.get<SaaVastus>(otsingUrl).pipe(
       map(vastus => vastus._embedded.tooted)
     );
   }
