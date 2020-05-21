@@ -1,5 +1,5 @@
 export class Toode {
-    
+    id: string;
     sku: string;
     nimi: string;
     kirjeldus: string;

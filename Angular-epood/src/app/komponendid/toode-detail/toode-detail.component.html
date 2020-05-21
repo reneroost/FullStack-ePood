@@ -1,0 +1,13 @@
+<div class="detail-section">
+    <div class="container-fluid">
+        <img src="{{ toode.pildiUrl }}" class="detail-pilt">
+        <h3>{{ toode.nimi }}</h3>
+        <div class="hind">{{ toode.artikliHind | currency: 'EUR' }}</div>
+        <a href="#" class="primary-btn">Lisa ostukorvi</a>
+        <hr>
+        <h4>Kirjeldus</h4>
+        <p>{{ toode.kirjeldus }}</p>
+
+        <a routerLink="/tooted" class="mt-5">Tagasi</a>
+    </div>
+</div>
