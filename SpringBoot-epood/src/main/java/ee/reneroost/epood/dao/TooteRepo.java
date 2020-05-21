@@ -13,4 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface TooteRepo extends JpaRepository<Toode, Long> {
 
     Page<Toode> findByKategooriaId(@RequestParam("id") Long id, Pageable pageable);
+
+    Page<Toode> findByNimiContaining(@RequestParam("nimi") String nimi, Pageable pageable);
 }

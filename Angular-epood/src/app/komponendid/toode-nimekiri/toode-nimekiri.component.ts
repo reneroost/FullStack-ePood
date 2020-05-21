@@ -12,6 +12,7 @@ export class ToodeNimekiriComponent implements OnInit {
 
   tooted: Toode[];
   praeguseKategooriaId: number;
+  otsinguSeisund: boolean;
 
   constructor(private toodeTeenus: ToodeService,
               private marsruut: ActivatedRoute) { }
@@ -23,6 +24,27 @@ export class ToodeNimekiriComponent implements OnInit {
   }
 
   nimekirjastaTooted() {
+
+    this.otsinguSeisund = this.marsruut.snapshot.paramMap.has('votmesona');
+
+    if (this.otsinguSeisund) {
+      this.kasitleToodeOtsing();      
+    } else {
+      this.kasitleToodeNimekiri();
+    }
+  }
+
+  kasitleToodeOtsing() {
+    const votmesona: string = this.marsruut.snapshot.paramMap.get('votmesona');
+
+    this.toodeTeenus.otsiTooteid(votmesona).subscribe(
+      andmed => {
+        this.tooted = andmed;
+      }
+    );
+  }
+
+  kasitleToodeNimekiri() {
     const onKategooriaId: boolean = this.marsruut.snapshot.paramMap.has('id');
 
     if (onKategooriaId) {
@@ -31,9 +53,9 @@ export class ToodeNimekiriComponent implements OnInit {
       this.praeguseKategooriaId = 1;
     }
 
-
     this.toodeTeenus.getToodeNimekiri(this.praeguseKategooriaId).subscribe(
       andmed => {
+        //console.log('Toode Nimekiri=' + JSON.stringify(andmed));
         this.tooted = andmed;
       }
     );

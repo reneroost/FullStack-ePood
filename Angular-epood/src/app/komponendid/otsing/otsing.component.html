@@ -1,0 +1,16 @@
+<div class="form-header">
+
+    <input 
+        #minuSisend
+        class="au-input au-input-xl"
+        type="text" 
+        placeholder="Otsi tooteid" 
+        (keyup.enter)="sooritaOtsing(minuSisend.value)"/>
+    
+    <button 
+        class="au-btn-submit" 
+        (click)="sooritaOtsing(minuSisend.value)">
+      Otsi
+    </button>
+
+</div>

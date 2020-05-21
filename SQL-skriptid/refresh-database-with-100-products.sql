@@ -41,10 +41,10 @@ AUTO_INCREMENT = 1;
 -- -----------------------------------------------------
 -- Categories
 -- -----------------------------------------------------
-INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Books');
-INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Coffee Mugs');
-INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Mouse Pads');
-INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Luggage Tags');
+INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Raamatud');
+INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Kohvitassid');
+INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Hiirepadjad');
+INSERT INTO PRODUCT_CATEGORY(CATEGORY_NAME) VALUES ('Pagasisildid');
 
 -- -----------------------------------------------------
 -- Books

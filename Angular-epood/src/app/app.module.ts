@@ -6,9 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ToodeNimekiriComponent } from './komponendid/toode-nimekiri/toode-nimekiri.component';
 import { ToodeService } from './teenused/toode.service';
+import { ToodeKategooriaMenyyComponent } from './komponendid/toode-kategooria-menyy/toode-kategooria-menyy.component';
+import { OtsingComponent } from './komponendid/otsing/otsing.component';
 
 
 const marsruudid: Routes = [
+  { path: 'search/:votmesona', component: ToodeNimekiriComponent },
   { path: 'kategooria/:id', component: ToodeNimekiriComponent },
   { path: 'kategooria', component: ToodeNimekiriComponent },
   { path: 'tooted', component: ToodeNimekiriComponent },
@@ -18,7 +21,9 @@ const marsruudid: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ToodeNimekiriComponent
+    ToodeNimekiriComponent,
+    ToodeKategooriaMenyyComponent,
+    OtsingComponent
   ],
   imports: [
     RouterModule.forRoot(marsruudid),

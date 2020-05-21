@@ -12,6 +12,15 @@
                     </div>
                 </div>
 
+                <!-- kui 'tooted' on tyhi (n6iteks kui otsingus6nale ei leitud vastust),
+                     siis kuvada vastav s6num-->
+
+                <div 
+                    *ngIf="tooted?.length == 0" 
+                    class="alert alert-warning col-md-12"
+                    role="alert">
+                    Tooteid ei leitud!
+                </div>
             </div>
         </div>
     </div>

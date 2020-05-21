@@ -21,7 +21,7 @@ public class Toode {
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    private TooteKategooria kategooria;
+    private ToodeKategooria kategooria;
 
     @Column(name = "sku")
     private String sku;

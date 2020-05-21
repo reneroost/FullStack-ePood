@@ -11,7 +11,7 @@ import java.util.Set;
 // @Data -- Lomboki buggi
 @Getter
 @Setter
-public class TooteKategooria {
+public class ToodeKategooria {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
