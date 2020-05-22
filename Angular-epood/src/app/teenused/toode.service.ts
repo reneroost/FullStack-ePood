@@ -15,16 +15,19 @@ export class ToodeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getToodeKategooriad(): Observable<ToodeKategooria[]> {
-    return this.httpClient.get<SaaVastusToodeKategooria>(this.kategooriaUrl).pipe(
-      map(vastus => vastus._embedded.toodeKategooria)
-    );
-  }
-
   getToodeNimekiri(kategooriaId: number): Observable<Toode[]> {
     const otsingUrl = `${this.baasUrl}/search/findByKategooriaId?id=${kategooriaId}`;
 
     return this.saaTooteid(otsingUrl);
+  }
+
+  getToodeNimekiriPaginate(leheNumber: number,
+    leheSuurus: number,
+    kategooriaId: number): Observable<SaaVastusToode> {
+    const otsingUrl = `${this.baasUrl}/search/findByKategooriaId?id=${kategooriaId}` +
+      `&page=${leheNumber}&size=${leheSuurus}`;
+
+    return this.httpClient.get<SaaVastusToode>(otsingUrl);
   }
 
   getToode(toodeId: number): Observable<Toode> {
@@ -39,14 +42,36 @@ export class ToodeService {
     return this.saaTooteid(otsingUrl);
   }
 
+  otsiTooteidPaginate(
+    leheNumber: number,
+    leheSuurus: number,
+    votmesona: string): Observable<SaaVastusToode> {
+    const otsingUrl = `${this.baasUrl}/search/findByNimiContaining?nimi=${votmesona}` +
+      `&page=${leheNumber}&size=${leheSuurus}`;
+
+    return this.httpClient.get<SaaVastusToode>(otsingUrl);
+  }
+
   private saaTooteid(otsingUrl: string) {
     return this.httpClient.get<SaaVastusToode>(otsingUrl).pipe(map(vastus => vastus._embedded.tooted));
+  }
+
+  getToodeKategooriad(): Observable<ToodeKategooria[]> {
+    return this.httpClient.get<SaaVastusToodeKategooria>(this.kategooriaUrl).pipe(
+      map(vastus => vastus._embedded.toodeKategooria)
+    );
   }
 }
 
 interface SaaVastusToode {
   _embedded: {
     tooted: Toode[];
+  },
+  page: {
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number
   }
 }
 

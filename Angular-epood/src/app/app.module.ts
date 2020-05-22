@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ToodeNimekiriComponent } from './komponendid/toode-nimekiri/toode-nimekiri.component';
@@ -31,7 +32,8 @@ const marsruudid: Routes = [
   imports: [
     RouterModule.forRoot(marsruudid),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [ToodeService],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@
     <div class="section-content section-content-p30">
         <div class="container-fluid">
             <div class="row">
-                
+
                 <div *ngFor="let toode of tooted" class="col-md-3">
                     <div class="product-box">
                         <a routerLink="/tooted/{{ toode.id }}">
@@ -19,13 +19,38 @@
                 <!-- kui 'tooted' on tyhi (n6iteks kui otsingus6nale ei leitud vastust),
                      siis kuvada vastav s6num-->
 
-                <div 
-                    *ngIf="tooted?.length == 0" 
-                    class="alert alert-warning col-md-12"
-                    role="alert">
+                <div *ngIf="tooted?.length == 0" class="alert alert-warning col-md-12" role="alert">
                     Tooteid ei leitud!
                 </div>
             </div>
+
+            <!-- jaluse algus, pagination -->
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-8" style="padding-left: 30%">
+                                <ngb-pagination [(page)]="leheNumber" [pageSize]="leheSuurus"
+                                    [collectionSize]="artikleidKokku" (pageChange)="nimekirjastaTooted()"
+                                    [maxSize]=5 [boundaryLinks]="true">
+                                </ngb-pagination>
+                            </div>
+                            <div class="col-md-4" style="text-align: right;">
+                                <span class="mr-2">Tooteid lehel</span>
+                                <select (change)="uuendaLeheSuurust($event.target.value)">
+                                    <option>2</option>
+                                    <option>5</option>
+                                    <option selected="true">10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- jaluse lõpp, /pagination -->
         </div>
     </div>
 </div>

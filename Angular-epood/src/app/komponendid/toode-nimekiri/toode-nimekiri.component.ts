@@ -11,8 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 export class ToodeNimekiriComponent implements OnInit {
 
   tooted: Toode[];
-  praeguseKategooriaId: number;
-  otsinguSeisund: boolean;
+  praeguneKategooriaId: number = 1;
+  eelmineKategooriaId: number = 1;
+  otsinguSeisund: boolean = false;
+
+  leheNumber: number = 1;
+  leheSuurus: number = 10;
+  artikleidKokku: number = 100;
+
+  eelmineVotmesona: string = null;
+
 
   constructor(private toodeTeenus: ToodeService,
               private marsruut: ActivatedRoute) { }
@@ -37,28 +45,58 @@ export class ToodeNimekiriComponent implements OnInit {
   kasitleToodeOtsing() {
     const votmesona: string = this.marsruut.snapshot.paramMap.get('votmesona');
 
-    this.toodeTeenus.otsiTooteid(votmesona).subscribe(
-      andmed => {
-        this.tooted = andmed;
-      }
-    );
+    if (this.eelmineVotmesona != votmesona) {
+      this.leheNumber = 1;
+    }
+
+    this.eelmineVotmesona = votmesona;
+
+    console.log(`votmesona=${votmesona}, leheNumber=${this.leheNumber}`);
+
+    this.toodeTeenus.otsiTooteidPaginate(this.leheNumber - 1, this.leheSuurus, votmesona)
+    .subscribe(this.tootleVastust());
   }
 
   kasitleToodeNimekiri() {
     const onKategooriaId: boolean = this.marsruut.snapshot.paramMap.has('id');
 
     if (onKategooriaId) {
-      this.praeguseKategooriaId = +this.marsruut.snapshot.paramMap.get('id');
+      this.praeguneKategooriaId = +this.marsruut.snapshot.paramMap.get('id');
     } else {
-      this.praeguseKategooriaId = 1;
+      this.praeguneKategooriaId = 1;
     }
 
-    this.toodeTeenus.getToodeNimekiri(this.praeguseKategooriaId).subscribe(
-      andmed => {
-        //console.log('Toode Nimekiri=' + JSON.stringify(andmed));
-        this.tooted = andmed;
-      }
-    );
+
+
+    if (this.eelmineKategooriaId != this.praeguneKategooriaId) {
+      this.leheNumber = 1;
+    }
+
+    this.eelmineKategooriaId = this.praeguneKategooriaId;
+
+    console.log(`praeguneKategooriaId=${this.praeguneKategooriaId}, leheNumber=${this.leheNumber}`);
+
+
+    // nüüd tagasta tooted vastava kategooria ID-ga
+    this.toodeTeenus.getToodeNimekiriPaginate(
+      this.leheNumber - 1, 
+      this.leheSuurus, 
+      this.praeguneKategooriaId)
+      .subscribe(this.tootleVastust());
   }
 
+  tootleVastust() {
+    return andmed => {
+      this.tooted = andmed._embedded.tooted;
+      this.leheNumber = andmed.page.number + 1;
+      this.leheSuurus = andmed.page.size;
+      this.artikleidKokku = andmed.page.totalElements
+    }
+  }
+
+  uuendaLeheSuurust(leheSuurus: number) {
+    this.leheSuurus = leheSuurus;
+    this.leheNumber = 1;
+    this.nimekirjastaTooted();
+  }
 }
