@@ -10,9 +10,12 @@ import { ToodeService } from './teenused/toode.service';
 import { ToodeKategooriaMenyyComponent } from './komponendid/toode-kategooria-menyy/toode-kategooria-menyy.component';
 import { OtsingComponent } from './komponendid/otsing/otsing.component';
 import { ToodeDetailComponent } from './komponendid/toode-detail/toode-detail.component';
+import { OstukorvOlekComponent } from './komponendid/ostukorv-olek/ostukorv-olek.component';
+import { OstukorvDetailidComponent } from './komponendid/ostukorv-detailid/ostukorv-detailid.component';
 
 
 const marsruudid: Routes = [
+  { path: 'ostukorv-detailid', component: OstukorvDetailidComponent },
   { path: 'tooted/:id', component: ToodeDetailComponent },
   { path: 'search/:votmesona', component: ToodeNimekiriComponent },
   { path: 'kategooria/:id', component: ToodeNimekiriComponent },
@@ -27,7 +30,9 @@ const marsruudid: Routes = [
     ToodeNimekiriComponent,
     ToodeKategooriaMenyyComponent,
     OtsingComponent,
-    ToodeDetailComponent
+    ToodeDetailComponent,
+    OstukorvOlekComponent,
+    OstukorvDetailidComponent
   ],
   imports: [
     RouterModule.forRoot(marsruudid),

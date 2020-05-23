@@ -3,7 +3,7 @@
         <img src="{{ toode.pildiUrl }}" class="detail-pilt">
         <h3>{{ toode.nimi }}</h3>
         <div class="hind">{{ toode.artikliHind | currency: 'EUR' }}</div>
-        <a href="#" class="primary-btn">Lisa ostukorvi</a>
+        <button (click)="lisaOstukorvi()" class="btn btn-primary btn-sm">Lisa ostukorvi</button>
         <hr>
         <h4>Kirjeldus</h4>
         <p>{{ toode.kirjeldus }}</p>

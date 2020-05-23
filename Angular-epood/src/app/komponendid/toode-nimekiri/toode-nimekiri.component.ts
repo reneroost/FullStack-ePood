@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToodeService } from 'src/app/teenused/toode.service';
 import { Toode } from 'src/app/yldine/toode';
 import { ActivatedRoute } from '@angular/router';
+import { OstukorvService } from 'src/app/teenused/ostukorv.service';
+import { OstukorvArtikkel } from 'src/app/yldine/ostukorv-artikkel';
 
 @Component({
   selector: 'app-toode-nimekiri',
@@ -23,6 +25,7 @@ export class ToodeNimekiriComponent implements OnInit {
 
 
   constructor(private toodeTeenus: ToodeService,
+              private ostukorvTeenus: OstukorvService,
               private marsruut: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -98,5 +101,13 @@ export class ToodeNimekiriComponent implements OnInit {
     this.leheSuurus = leheSuurus;
     this.leheNumber = 1;
     this.nimekirjastaTooted();
+  }
+
+  lisaOstukorvi(toode: Toode) {
+    console.log(`Lisan ostukorvi: ${toode.nimi}, ${toode.artikliHind}`);
+
+    const ostukorvArtikkel = new OstukorvArtikkel(toode);
+
+    this.ostukorvTeenus.lisaOstukorvi(ostukorvArtikkel);
   }
 }

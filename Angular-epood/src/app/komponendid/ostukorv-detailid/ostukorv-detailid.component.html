@@ -1,0 +1,59 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="ostukorvArtiklid.length > 0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="20%">Toote pilt</th>
+                        <th width="50%">Tooteinfo</th>
+                        <th width="30%"></th>
+                    </tr>
+                    <tr *ngFor="let artikkel of ostukorvArtiklid">
+                        <td>
+                            <img src="{{ artikkel.pildiUrl }}" class="image-responsive" width="150px" />
+                        </td>
+                        <td>
+                            <p>{{ artikkel.nimi }}</p>
+                            <p>{{ artikkel.artikliHind | currency: 'EUR' }}</p>
+                        </td>
+                        <td>
+                            <div class="items">
+                                <label>Kogus: </label>
+                                <div class="row no-gutter">
+                                    <div class="col">
+                                        <button (click)="suurendaKogust(artikkel)" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col ml-4 mr-2">
+                                        {{ artikkel.kogus }}
+                                    </div>
+                                    <div class="col">
+                                        <button (click)="vahendaKogust(artikkel)" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-8"></div>
+                                </div>
+                            </div>
+                            <button (click)="eemaldaArtikkel(artikkel)" class="btn btn-primary btn-sm mt-2">Eemalda</button>
+                            <p class="mt-2">Vahesumma: {{ artikkel.artikliHind * artikkel.kogus | currency: 'EUR' }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="font-weight: bold">
+                            <p>Üldkogus: {{ yldKogus }}</p>
+                            <p>Saatmine: tasuta</p>
+                            <p>Summa: {{ summa }}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- kui ostukorv on tühi, siis kuva sõnum -->
+            <div *ngIf="ostukorvArtiklid.length == 0" class="alert alert-warning col-md-12" role="alert">
+                Teie ostukorv on tühi.
+            </div>
+        </div>
+    </div>
+</div>

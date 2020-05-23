@@ -11,8 +11,8 @@
                         <a routerLink="/tooted/{{ toode.id }}">
                             <h1>{{ toode.nimi }}</h1>
                         </a>
-                        <div class="hind">{{ toode.artikliHind | currency:'EUR' }}</div>
-                        <a href="#" class="primary-btn">Lisa ostukorvi</a>
+                        <div class="price">{{ toode.artikliHind | currency:'EUR' }}</div>
+                        <button (click)="lisaOstukorvi(toode)"class="btn btn-primary btn-sm">Lisa ostukorvi</button>
                     </div>
                 </div>
 
