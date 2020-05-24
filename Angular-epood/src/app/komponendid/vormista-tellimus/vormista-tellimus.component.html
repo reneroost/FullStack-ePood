@@ -1,0 +1,259 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <form [formGroup]="vormistaTellimusFormGroup" (ngSubmit)="onSaadaVorm()">
+                
+                <!-- Kliendi andmed -->
+                <div formGroupName="klient" class="form-area">
+                    <h3>Klient</h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Eesnimi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="eesNimi" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Perenimi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="pereNimi" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="email" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saatmisaadress -->
+                <div formGroupName="saatmisAadress" class="form-area">
+                    <h3>Saatmisaadress</h3>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Tänav</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="tanav" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Asula</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="asula" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Maakond</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <select formControlName="maakond">
+                                    <option>Harjumaa</option>
+                                    <option>Hiiumaa</option>
+                                    <option>Ida-Virumaa</option>
+                                    <option>Jõgevamaa</option>
+                                    <option>Järvamaa</option>
+                                    <option>Lääne-Virumaa</option>
+                                    <option>Läänemaa</option>
+                                    <option>Põlvamaa</option>
+                                    <option>Pärnumaa</option>
+                                    <option>Raplamaa</option>    
+                                    <option>Saaremaa</option>
+                                    <option>Tartumaa</option>
+                                    <option>Valgamaa</option>
+                                    <option>Viljandimaa</option>
+                                    <option>Võrumaa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Postiindeks</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="postiindeks" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Märkeruut, et kopeerida aadress 
+                    saatmisaadessi kastist maksjaaadressi kasti-->
+                <div class="input-space">
+                    <label class="au-checkbox">
+                        <input type="checkbox" (change)="kopeeriAadress($event)">
+                        <span class="au-checkmark"></span>Maksja adress on sama, mis saatmisaadress
+                    </label>
+                </div>
+
+                <!-- Maksja aadress -->
+                <div formGroupName="maksjaAadress" class="form-area">
+                    <h3>Saatmisaadress</h3>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Tänav</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="tanav" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Asula</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="asula" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Maakond</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <select formControlName="maakond">
+                                    <option>Harjumaa</option>
+                                    <option>Hiiumaa</option>
+                                    <option>Ida-Virumaa</option>
+                                    <option>Jõgevamaa</option>
+                                    <option>Järvamaa</option>
+                                    <option>Lääne-Virumaa</option>
+                                    <option>Läänemaa</option>
+                                    <option>Põlvamaa</option>
+                                    <option>Pärnumaa</option>
+                                    <option>Raplamaa</option>    
+                                    <option>Saaremaa</option>
+                                    <option>Tartumaa</option>
+                                    <option>Valgamaa</option>
+                                    <option>Viljandimaa</option>
+                                    <option>Võrumaa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Postiindeks</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="postiindeks" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kaardi andmed -->
+                <div formGroupName="kaardiAndmed" class="form-area">
+                    <h3>Makseinfo</h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Kaardi tüüp</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <select formControlName="kaardityyp">
+                                    <option>Visa</option>
+                                    <option>Mastercard</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Omaniku nimi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="kaardiOmanik" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Kaardi number</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="kaardiNumber" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Turvakood (3-kohaline)</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="kaardiTurvakood" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Kehtiv kuni</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-space">
+                                <input formControlName="kaardiKeshtivusLoppKp" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tellimuse detailid -->
+                <div class="form-area">
+                    <h3>Tellimuse ülevaade</h3>
+                    <p>Üldkogus: {{ yldKogus }}</p>
+                    <p>Postikulu: tasuta</p>
+                    <p>Summa: {{ summa }}</p>
+                </div>
+
+                <!-- Kinnita nupp -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Kinnita</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

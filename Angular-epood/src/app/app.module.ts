@@ -12,9 +12,12 @@ import { OtsingComponent } from './komponendid/otsing/otsing.component';
 import { ToodeDetailComponent } from './komponendid/toode-detail/toode-detail.component';
 import { OstukorvOlekComponent } from './komponendid/ostukorv-olek/ostukorv-olek.component';
 import { OstukorvDetailidComponent } from './komponendid/ostukorv-detailid/ostukorv-detailid.component';
+import { VormistaTellimusComponent } from './komponendid/vormista-tellimus/vormista-tellimus.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const marsruudid: Routes = [
+  { path: 'vormista-tellimus', component: VormistaTellimusComponent},
   { path: 'ostukorv-detailid', component: OstukorvDetailidComponent },
   { path: 'tooted/:id', component: ToodeDetailComponent },
   { path: 'search/:votmesona', component: ToodeNimekiriComponent },
@@ -32,13 +35,15 @@ const marsruudid: Routes = [
     OtsingComponent,
     ToodeDetailComponent,
     OstukorvOlekComponent,
-    OstukorvDetailidComponent
+    OstukorvDetailidComponent,
+    VormistaTellimusComponent
   ],
   imports: [
     RouterModule.forRoot(marsruudid),
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [ToodeService],
   bootstrap: [AppComponent]
